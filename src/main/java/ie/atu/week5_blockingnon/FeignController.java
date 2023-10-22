@@ -41,4 +41,12 @@ public class FeignController {
         return list.toString();
     }
 
+    @GetMapping("/feignSpecific")
+    public TodoResponse getFeignDataSpecific() throws Exception, InterruptedException{
+
+            TodoResponse result = feignService.fetchDataList(196);
+
+        return result;
+    }
+
 }
