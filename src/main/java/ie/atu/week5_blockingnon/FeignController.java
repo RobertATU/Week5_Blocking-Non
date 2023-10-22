@@ -2,6 +2,7 @@ package ie.atu.week5_blockingnon;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,18 +36,16 @@ public class FeignController {
     public String getFeignDataList() throws Exception, InterruptedException{
 
         List<TodoResponse> list = new ArrayList<>();
-        for(int i = 1; i<= 10;i++){
+        for(int i = 190; i<= 199;i++){
             list.add(feignService.fetchDataList(i));
         }
+        for(TodoResponse lists: list){
+            if(lists.getId() == 196){
+                return lists.toString();
+            }
+
+        }
+
         return list.toString();
     }
-
-    @GetMapping("/feignSpecific")
-    public TodoResponse getFeignDataSpecific() throws Exception, InterruptedException{
-
-            TodoResponse result = feignService.fetchDataList(196);
-
-        return result;
-    }
-
 }
