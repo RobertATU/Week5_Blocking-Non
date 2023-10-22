@@ -36,10 +36,9 @@ public class FeignController {
 
         List<TodoResponse> list = new ArrayList<>();
         for(int i = 1; i<= 10;i++){
-            int finalI = i;
-            list.add(feignService.fetchDataList(finalI));
-
+            list.add(feignService.fetchDataList(i));
         }
         return list.toString();
     }
+
 }
