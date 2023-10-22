@@ -33,19 +33,19 @@ public class FeignController {
     }
 
     @GetMapping("/feignList")
-    public String getFeignDataList() throws Exception, InterruptedException{
-
+    public TodoResponse getFeignDataList() throws Exception, InterruptedException {
+        TodoResponse empty = new TodoResponse();
         List<TodoResponse> list = new ArrayList<>();
-        for(int i = 190; i<= 199;i++){
+        for (int i = 190; i <= 199; i++) {
             list.add(feignService.fetchDataList(i));
         }
-        for(TodoResponse lists: list){
-            if(lists.getId() == 196){
-                return lists.toString();
+        for (TodoResponse lists : list) {
+            if (lists.getId() == 196) {
+                return lists;
             }
 
-        }
+        }   return empty;
 
-        return list.toString();
     }
+
 }
